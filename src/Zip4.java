@@ -14,7 +14,7 @@ public class Zip4 {
                 String[] row = line.split(",");
                 Integer code = Integer.valueOf(row[0].replaceAll("\\s",""));
                 Integer index = hashFunction(code);
-                collisionControl(index);
+                collisionCounter(index);
                 data[index] = new Node(code, row[1], Integer.valueOf(row[2]));
             }
         } catch (Exception e) {
@@ -24,11 +24,9 @@ public class Zip4 {
     private Integer hashFunction(Integer code) {
         return code % modulo;
     }
-    private void collisionControl(Integer index) {
-        if (data[index] != null) {
-            collisionFrequency++;
-        } else {
-            return;
-        }
+    private void collisionCounter(Integer index) {
+
+        //ska spara data[index] = key
+        //antalet kollisioner för den specifika keyn för just
     }
 }
