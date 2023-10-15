@@ -1,10 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class Zip {
-    Node[] data;
-    int max;
-    public Zip (String file) { //fyller data med csv filen
+public class Zip1 {
+    private Node[] data;
+    private int max;
+    public Zip1(String file) { //fyller data med csv filen
         data = new Node[10000]; //10 000
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
@@ -20,7 +20,7 @@ public class Zip {
     }
     public boolean lookupLinear(String lookupZip) {
         for (Node zip : data) {
-            if (zip.code.equals(lookupZip)) {
+            if (zip.stringCode.equals(lookupZip)) {
                 return true;
             }
         }
@@ -31,9 +31,9 @@ public class Zip {
         int max = data.length - 1;
         while (min <= max) {
             int middle = (min + max) / 2;
-            if (data[middle].code.equals(lookupZip)) {
+            if (data[middle].stringCode.equals(lookupZip)) {
                 return true;
-            } else if (data[middle].code.compareTo(lookupZip) > 0) {
+            } else if (data[middle].stringCode.compareTo(lookupZip) > 0) {
                 max = middle - 1;
             } else {
                 min = middle + 1;
