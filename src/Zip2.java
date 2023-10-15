@@ -19,4 +19,27 @@ public class Zip2 {
             System.out.println(" file " + file + " not found");
         }
     }
+    public boolean lookupLinear(Integer lookupZip) {
+        for (Node zip : data) {
+            if (zip.integerCode.equals(lookupZip)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean lookupBinary(Integer lookupZip) {
+        int min = 0;
+        int max = data.length - 1;
+        while (min <= max) {
+            int middle = (min + max) / 2;
+            if (data[middle].integerCode.equals(lookupZip)) {
+                return true;
+            } else if (data[middle].integerCode > lookupZip) {
+                max = middle - 1;
+            } else {
+                min = middle + 1;
+            }
+        }
+        return false;
+    }
 }
