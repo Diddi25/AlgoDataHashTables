@@ -3,7 +3,7 @@ import java.io.FileReader;
 
 public class Zip3 {
     private Node[] data;
-    private final int largerSize = 10000;
+    private final int largerSize = 100000;
     public Zip3 (String file) { //fyller data med csv filen
         data = new Node[largerSize];
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
