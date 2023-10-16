@@ -1,10 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class Zip3 {
+public class ZipMemoryWaste {
     private Node[] data;
     private final int largerSize = 100000;
-    public Zip3 (String file) { //fyller data med csv filen
+    public ZipMemoryWaste(String file) { //fyller data med csv filen
         data = new Node[largerSize];
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;

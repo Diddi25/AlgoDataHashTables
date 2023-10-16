@@ -1,13 +1,15 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class Zip4 {
+public class ZipHashFunction {
     private Node[] data;
-    public int collisionFrequency;
     private final int smallerSize = 10000;
-    private final int modulo = 10000;
-    public Zip4 (String file, boolean hashValue) { //fyller data med csv filen
+    private final int modulo;
+    public int[] collisionFrequency;
+    public ZipHashFunction(String file, int modulo) { //fyller data med csv filen
         data = new Node[smallerSize];
+        this.modulo = modulo;
+        collisionFrequency = new int[modulo];
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -25,8 +27,8 @@ public class Zip4 {
         return code % modulo;
     }
     private void collisionCounter(Integer index) {
-
-        //ska spara data[index] = key
-        //antalet kollisioner för den specifika keyn för just
+        if (data[index] != null) {
+            collisionFrequency[data[index].integerCode]++; //keyn är på rätt index och inkrementeras för varje kollision
+        }
     }
 }
