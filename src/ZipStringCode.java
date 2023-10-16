@@ -3,8 +3,9 @@ import java.io.FileReader;
 
 public class ZipStringCode {
     private Node[] data;
+    private final int smallerSize = 10000;
     public ZipStringCode(String file) { //fyller data med csv filen
-        data = new Node[10000]; //10 000
+        data = new Node[smallerSize]; //10 000
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             int position = 0;

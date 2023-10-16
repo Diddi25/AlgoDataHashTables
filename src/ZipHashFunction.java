@@ -14,7 +14,7 @@ public class ZipHashFunction {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split(",");
-                Integer code = Integer.valueOf(row[0].replaceAll("\\s",""));
+                Integer code = Integer.valueOf(row[0].replaceAll("\\s","")); //key
                 Integer index = hashFunction(code);
                 collisionCounter(index);
                 data[index] = new Node(code, row[1], Integer.valueOf(row[2]));
