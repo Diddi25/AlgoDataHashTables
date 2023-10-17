@@ -12,8 +12,8 @@ public class ZipHashTable {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split(",");
+                Node data = new Node(row[0], row[1], Integer.valueOf(row[2]));
                 Integer key = Integer.valueOf(row[0].replaceAll("\\s","")); //key
-                Node data = new Node(key, row[1], Integer.valueOf(row[2]));
                 Integer index = hashFunction(key);
                 collisionControl(index, key, data);
             }
@@ -33,6 +33,11 @@ public class ZipHashTable {
             }
             hashTable[index].nextKey = new Bucket(key, data, null);
         }
+    }
+    public boolean lookup(Integer zip) {
+        Integer lookupIndex = hashFunction(zip);
+        Bucket desiredBucket = hashTable[lookupIndex];
+        return desiredBucket.key.equals(zip);
     }
 
 }
