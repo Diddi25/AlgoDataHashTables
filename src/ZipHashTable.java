@@ -37,7 +37,17 @@ public class ZipHashTable {
     public boolean lookup(Integer zip) {
         Integer lookupIndex = hashFunction(zip);
         Bucket desiredBucket = hashTable[lookupIndex];
-        return desiredBucket.key.equals(zip);
+        if (desiredBucket.key.equals(zip)) {
+            return true;
+        } else {
+            while (desiredBucket.nextKey != null) {
+                if (desiredBucket.key.equals(zip)) {
+                    return true;
+                }
+                desiredBucket = desiredBucket.nextKey;
+            }
+        }
+        return false;
     }
 
 }
