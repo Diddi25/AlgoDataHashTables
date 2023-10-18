@@ -11,7 +11,7 @@ public class ZipStringCode {
             int position = 0;
             while ((line = reader.readLine()) != null) {
                 String[] row = line.split(",");
-                data[position++] = new Node(row[0], row[1], Integer.valueOf(row[2]));
+                data[position++] = new Node(row[0].replaceAll("\\s", ""), row[1], Integer.valueOf(row[2]));
             }
         } catch (Exception e) {
             System.out.println(" file " + file + " not found");
@@ -30,12 +30,16 @@ public class ZipStringCode {
         int max = data.length - 1;
         while (min <= max) {
             int middle = (min + max) / 2;
-            if (data[middle].stringCode.equals(lookupZip)) {
-                return true;
-            } else if (data[middle].stringCode.compareTo(lookupZip) > 0) {
-                max = middle - 1;
-            } else {
+            if (data[middle] == null) {
                 min = middle + 1;
+            } else {
+                if (data[middle].stringCode.equals(lookupZip)) {
+                    return true;
+                } else if (data[middle].stringCode.compareTo(lookupZip) > 0) {
+                    max = middle - 1;
+                } else {
+                    min = middle + 1;
+                }
             }
         }
         return false;

@@ -15,14 +15,15 @@ public class Benchmark {
         String stringZip1 = Integer.toString(testZip1);
         String stringZip2 = Integer.toString(testZip2);
 
-        ZipStringCode stringCode = new ZipStringCode("postnummer");
-        ZipIntegerCode integerCode = new ZipIntegerCode("postnummer");
+        ZipStringCode stringCode = new ZipStringCode("postnummer.csv");
+        ZipIntegerCode integerCode = new ZipIntegerCode("postnummer.csv");
 
         testLinearLookup(stringCode, integerCode, stringZip1, stringZip2);
         testBinaryLookup(stringCode, integerCode, stringZip1, stringZip2);
     }
 
     private static void testLinearLookup(ZipStringCode stringCode, ZipIntegerCode integerCode, String stringZip1, String stringZip2) {
+        System.out.print("Linear");
         restoreMinAndMax();
         float min1 = benchmarkLinearLookupForStrings(stringCode, stringZip1); //testZip1
         System.out.printf("%10.0f", min1);
@@ -40,6 +41,7 @@ public class Benchmark {
         System.out.printf("%10.0f\n", min4);
     }
     private static void testBinaryLookup(ZipStringCode stringCode, ZipIntegerCode integerCode, String stringZip1, String stringZip2) {
+        System.out.print("Binary");
         restoreMinAndMax();
         float min1 = benchmarkBinaryLookupForStrings(stringCode, stringZip1); //testZip1
         System.out.printf("%10.0f", min1);
