@@ -1,12 +1,12 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class ZipHashTable {
+public class ZipHashTable extends HashTables {
     Bucket[] hashTable;
-    int hashTableSize = 10000;
-    int modulo = 10000;
+    int hashTableSize;
+    int modulo;
     public ZipHashTable(String fileName, int modulo) {
-        hashTable = new Bucket[hashTableSize];
+        hashTable = new Bucket[modulo];
         this.modulo = modulo;
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -21,10 +21,10 @@ public class ZipHashTable {
             System.out.println(" file " + fileName + " not found");
         }
     }
-    private Integer hashFunction(Integer key) {
+    public Integer hashFunction(Integer key) {
         return key % modulo;
     }
-    private void collisionControl(Integer index, Integer key, Node data) {
+    public void collisionControl(Integer index, Integer key, Node data) {
         if (hashTable[index] == null) {
             hashTable[index] = new Bucket(key, data, null);
         } else {
@@ -37,6 +37,9 @@ public class ZipHashTable {
     public boolean lookup(Integer zip) {
         Integer lookupIndex = hashFunction(zip);
         Bucket desiredBucket = hashTable[lookupIndex];
+        if (desiredBucket == null) {
+            return false;
+        }
         if (desiredBucket.key.equals(zip)) {
             return true;
         } else {

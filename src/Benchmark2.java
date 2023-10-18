@@ -14,8 +14,6 @@ public class Benchmark2 {
         ZipMemoryWaste largeDataArray = new ZipMemoryWaste("postnummer.csv");
         float min = benchmarkLookupInMemoryWaste(randomZipsToLookup, largeDataArray);
         System.out.printf("%10.0f", min);
-
-
     }
     private static Integer[] fillArrayWithRandomZips() {
         Integer[] randomZips = new Integer[40];

@@ -1,11 +1,11 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-public class ZipSlightlyBetter {
+public class ZipSlightlyBetter extends HashTables {
     Bucket[] largerHashTable;
-    int largerHashTableSize = 10000*2;
-    int modulo = 10000;
+    int largerHashTableSize;
+    int modulo;
     public ZipSlightlyBetter(String fileName, int modulo) {
-        largerHashTable = new Bucket[largerHashTableSize];
+        largerHashTable = new Bucket[modulo];
         this.modulo = modulo;
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
@@ -20,10 +20,10 @@ public class ZipSlightlyBetter {
             System.out.println(" file " + fileName + " not found");
         }
     }
-    private Integer hashFunction(Integer key) {
+    public Integer hashFunction(Integer key) {
         return key % modulo;
     }
-    private void collisionControl(Integer index, Integer key, Node data) {
+    public void collisionControl(Integer index, Integer key, Node data) {
         while (largerHashTable[index] != null) {
             index++;
         }
@@ -32,7 +32,7 @@ public class ZipSlightlyBetter {
     public boolean lookup(Integer zip) {
         Integer lookupIndex = hashFunction(zip);
         Bucket desiredBucket = largerHashTable[lookupIndex];
-        while(largerHashTable[lookupIndex] != null) {
+        while((largerHashTable[lookupIndex] != null) && (lookupIndex < modulo)) {
             if (desiredBucket.key.equals(zip)) {
                 return true;
             }
