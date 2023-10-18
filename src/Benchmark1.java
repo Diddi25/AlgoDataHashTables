@@ -1,4 +1,4 @@
-public class Benchmark {
+public class Benchmark1 {
     private final static Integer testZip1 = 11115;
     private final static Integer testZip2 = 98499;
     private static final int tries = 20;
