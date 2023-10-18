@@ -18,7 +18,7 @@ public class ZipIntegerCode {
             System.out.println(" file " + file + " not found");
         }
     }
-    public boolean lookupLinear(Integer lookupZip) {
+    public boolean linearLookup(Integer lookupZip) {
         for (Node zip : data) {
             if (zip.integerCode.equals(lookupZip)) {
                 return true;
@@ -26,7 +26,7 @@ public class ZipIntegerCode {
         }
         return false;
     }
-    public boolean lookupBinary(Integer lookupZip) {
+    public boolean binaryLookup(Integer lookupZip) {
         int min = 0;
         int max = data.length - 1;
         while (min <= max) {
