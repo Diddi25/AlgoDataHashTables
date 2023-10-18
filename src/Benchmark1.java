@@ -5,7 +5,7 @@ public class Benchmark1 {
     private static float min = Float.POSITIVE_INFINITY;
     private static float max = -1;
     public static void main(String[] args) {
-        System.out.printf("#%18s%14s%15s%15s\n", "string zip 1", "string zip 2", "integer zip 1", "integer zip 2\n");
+        System.out.printf("#%5s%15s%14s%15s%15s\n", "type", "string zip 1", "string zip 2", "integer zip 1", "integer zip 2\n");
         benchmark();
     }
     private static void benchmark() {
