@@ -1,5 +1,4 @@
 import java.util.Random;
-
 public class Benchmark3 {
     private final static Integer testZip1 = 11115;
     private final static Integer testZip2 = 98499;

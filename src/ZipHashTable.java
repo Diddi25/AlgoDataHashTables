@@ -3,11 +3,11 @@ import java.io.FileReader;
 
 public class ZipHashTable extends HashTables {
     Bucket[] hashTable;
-    int hashTableSize;
     int modulo;
     public ZipHashTable(String fileName, int modulo) {
-        hashTable = new Bucket[modulo];
-        this.modulo = modulo;
+        int nearestPrime = Sieve.findNearestPrime(modulo);
+        hashTable = new Bucket[nearestPrime];
+        this.modulo = nearestPrime;
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {

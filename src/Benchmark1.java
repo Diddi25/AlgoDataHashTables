@@ -9,9 +9,6 @@ public class Benchmark1 {
         benchmark();
     }
     private static void benchmark() {
-        Integer[] intTestZips = {testZip1, testZip2};
-        String[] stringTestZips = {Integer.toString(testZip1), Integer.toString(testZip2),};
-
         String stringZip1 = Integer.toString(testZip1);
         String stringZip2 = Integer.toString(testZip2);
 

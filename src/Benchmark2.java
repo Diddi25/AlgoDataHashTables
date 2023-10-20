@@ -15,13 +15,6 @@ public class Benchmark2 {
         float min = benchmarkLookupInMemoryWaste(randomZipsToLookup, largeDataArray);
         System.out.printf("%10.0f", min);
     }
-    private static Integer[] fillArrayWithRandomZips() {
-        Integer[] randomZips = new Integer[40];
-        for(int i = 0; i < randomZips.length; i++) {
-            randomZips[i] = generateRandomIntegersInRange(testZip1, testZip2);
-        }
-        return randomZips;
-    }
     private static float benchmarkLookupInMemoryWaste(Integer[] randomZips, ZipMemoryWaste largeDataArray) {
         float takeTime = 0;
         for (int i = 0; i < tries; i++) {
@@ -33,6 +26,13 @@ public class Benchmark2 {
             }
         }
         return takeTime;
+    }
+    private static Integer[] fillArrayWithRandomZips() {
+        Integer[] randomZips = new Integer[40];
+        for(int i = 0; i < randomZips.length; i++) {
+            randomZips[i] = generateRandomIntegersInRange(testZip1, testZip2);
+        }
+        return randomZips;
     }
     private static Integer generateRandomIntegersInRange(int min, int max) {
         return new Random().nextInt(max - min + 1) + min;
